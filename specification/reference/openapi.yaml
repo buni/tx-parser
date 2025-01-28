@@ -45,7 +45,7 @@ paths:
               Example 1:
                 value:
                   address: '0x2527d2ed1dd0e7de193cf121f1630caefc23ac70'
-  '/v1/eth/addreses/{address}/transactions':
+  '/v1/eth/addresses/{address}/transactions':
     parameters:
       - schema:
           type: string
@@ -89,7 +89,7 @@ paths:
                       address: string
                       hash: string
                       value: string
-      operationId: get-v1-eth-addreses-address-transactions
+      operationId: get-v1-eth-addresses-address-transactions
 components:
   schemas:
     User:
