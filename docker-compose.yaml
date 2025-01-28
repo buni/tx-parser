@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    restart: always
+    entrypoint: sh -c `wgo run cmd/api/main.go`

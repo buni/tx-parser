@@ -1,0 +1,16 @@
+FROM golang:1.22.3-alpine
+
+RUN apk update && \
+    apk add --no-cache \
+    git \
+    bash \
+    curl \
+    alpine-sdk \
+    ca-certificates
+
+WORKDIR /app
+
+COPY . .
+RUN go mod download 
+
+EXPOSE 8082

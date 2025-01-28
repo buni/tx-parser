@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "9eb7f26a-b5e7-4899-9638-48e37ad5ef6b",
+		"name": "Tx Parser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33781693"
+	},
+	"item": [
+		{
+			"name": "v1/eth",
+			"item": [
+				{
+					"name": "Get the last parsed block",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/eth/blocks/current",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"eth",
+								"blocks",
+								"current"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/v1/eth/blocks/current",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"eth",
+										"blocks",
+										"current"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"height\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "post-v1-eth-addresses-subscribe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"address\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/eth/addresses/subscribe",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"eth",
+								"addresses",
+								"subscribe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"address\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/eth/addresses/subscribe",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"eth",
+										"addresses",
+										"subscribe"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get all parsed transactions for the given address",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/eth/addreses/:address/transactions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"eth",
+								"addreses",
+								":address",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "address",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/v1/eth/addreses/:address/transactions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"eth",
+										"addreses",
+										":address",
+										"transactions"
+									],
+									"variable": [
+										{
+											"key": "address",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<string>\",\n    \"token_type\": \"<string>\",\n    \"to\": \"<string>\",\n    \"from\": \"<string>\",\n    \"address\": \"<string>\",\n    \"hash\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"token_type\": \"<string>\",\n    \"to\": \"<string>\",\n    \"from\": \"<string>\",\n    \"address\": \"<string>\",\n    \"hash\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
