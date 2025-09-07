@@ -1,0 +1,100 @@
+openapi: 3.1.0
+x-stoplight:
+  id: l6i1owkc9l32v
+info:
+  title: Tx Parser
+  version: '1.0'
+servers:
+  - url: 'http://localhost:8181'
+paths:
+  /v1/eth/blocks/current:
+    get:
+      summary: Get the last parsed block
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  height:
+                    type: string
+              examples:
+                Example 1:
+                  value:
+                    height: '123'
+      operationId: get-v1-eth-blocks-current
+  /v1/eth/addresses/subscribe:
+    post:
+      summary: ''
+      operationId: post-v1-eth-addresses-subscribe
+      responses:
+        '201':
+          description: Created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+            examples:
+              Example 1:
+                value:
+                  address: '0x2527d2ed1dd0e7de193cf121f1630caefc23ac70'
+  '/v1/eth/addresses/{address}/transactions':
+    parameters:
+      - schema:
+          type: string
+        name: address
+        in: path
+        required: true
+    get:
+      summary: Get all parsed transactions for the given address
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    token_type:
+                      type: string
+                    to:
+                      type: string
+                    from:
+                      type: string
+                    address:
+                      type: string
+                    hash:
+                      type: string
+                    value:
+                      type: string
+                      description: This is the value in wei for ETH
+                    user_id:
+                      type: string
+                    block_number:
+                      type: string
+              examples:
+                Example 1:
+                  value:
+                    - id: string
+                      token_type: string
+                      to: string
+                      from: string
+                      address: string
+                      hash: string
+                      value: string
+                      user_id: string
+                      block_number: string
+      operationId: get-v1-eth-addresses-address-transactions
+
