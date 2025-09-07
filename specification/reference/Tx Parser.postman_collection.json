@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "8d02ec28-2759-4256-b6fe-9068ec14f064",
+		"name": "Tx Parser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1/eth",
+			"item": [
+				{
+					"name": "addresses",
+					"item": [
+						{
+							"name": "post-v1-eth-addresses-subscribe",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"address\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/eth/addresses/subscribe",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"eth",
+										"addresses",
+										"subscribe"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"address\": \"0x2527d2ed1dd0e7de193cf121f1630caefc23ac70\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/eth/addresses/subscribe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"eth",
+												"addresses",
+												"subscribe"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Get all parsed transactions for the given address",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/v1/eth/addresses/::address/transactions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"eth",
+										"addresses",
+										"::address",
+										"transactions"
+									],
+									"variable": [
+										{
+											"key": ":address",
+											"value": "0xf70da97812cb96acdf810712aa562db8dfa3dbef"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/v1/eth/addresses/:address/transactions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"eth",
+												"addresses",
+												":address",
+												"transactions"
+											],
+											"variable": [
+												{
+													"key": "address",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"string\",\n    \"token_type\": \"string\",\n    \"to\": \"string\",\n    \"from\": \"string\",\n    \"address\": \"string\",\n    \"hash\": \"string\",\n    \"value\": \"string\",\n    \"user_id\": \"string\",\n    \"block_number\": \"string\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get the last parsed block",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/eth/blocks/current",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"eth",
+								"blocks",
+								"current"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/eth/blocks/current",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"eth",
+										"blocks",
+										"current"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"height\": \"123\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8181",
+			"type": "string"
+		}
+	]
+}
