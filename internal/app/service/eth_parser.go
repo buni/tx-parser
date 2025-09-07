@@ -46,12 +46,12 @@ func (p *EthereumTxParser) ParseNextBlock(ctx context.Context) (err error) {
 			return fmt.Errorf("get current block: %w", err)
 		}
 
-		if blockResp.Response.Result == nil {
+		if blockResp.Result == nil {
 			return fmt.Errorf("current block: %w", entity.ErrCurrentBlockNil)
 		}
 
 		if height == "" {
-			height = *blockResp.Response.Result
+			height = *blockResp.Result
 
 			if err = p.ParseBlock(ctx, height); err != nil {
 				return fmt.Errorf("initial process block: %w", err)
@@ -98,7 +98,7 @@ func (p *EthereumTxParser) ParseBlock(ctx context.Context, height string) (err e
 			return fmt.Errorf("get block by number: %w", err)
 		}
 
-		for k := range blockResp.Response.Result.Transactions {
+		for k := range blockResp.Result.Transactions {
 			uniqAddrs[blockResp.Response.Result.Transactions[k].To] = struct{}{}
 			uniqAddrs[blockResp.Response.Result.Transactions[k].From] = struct{}{}
 		}
@@ -123,7 +123,7 @@ func (p *EthereumTxParser) ParseBlock(ctx context.Context, height string) (err e
 		}
 
 		// I've omited the block.Result.Withdraws, as I wasn't sure if those count as "transactions" in the context of this task.
-		blockTxs := blockResp.Response.Result.Transactions
+		blockTxs := blockResp.Result.Transactions
 		for k := range blockTxs {
 			subTo, ok := subscriptionMap[blockTxs[k].To]
 			if ok {

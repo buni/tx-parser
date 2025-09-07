@@ -24,7 +24,7 @@ func (h *HexBigInt) UnmarshalJSON(data []byte) error {
 	s = strings.TrimPrefix(s, "0x")
 
 	h.Int = new(big.Int)
-	if _, ok := h.Int.SetString(s, 16); !ok {
+	if _, ok := h.SetString(s, 16); !ok {
 		return fmt.Errorf("invalid hex string: %s", s)
 	}
 
@@ -35,7 +35,7 @@ func (h *HexBigInt) MarshalJSON() ([]byte, error) {
 	if h.Int == nil {
 		return json.Marshal("0x0") //nolint:wrapcheck
 	}
-	return json.Marshal("0x" + h.Int.Text(16)) //nolint:wrapcheck
+	return json.Marshal("0x" + h.Text(16)) //nolint:wrapcheck
 }
 
 type ErrorResponse struct {

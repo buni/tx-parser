@@ -96,7 +96,7 @@ func NewServer(ctx context.Context, opts ...Option) (server *Server, err error) 
 func (a *Server) Start() error {
 	a.Logger.InfoContext(a.Context, "starting server")
 	a.httpServer = &http.Server{
-		Addr:              a.Config.Service.ToHost(),
+		Addr:              a.Config.ToHost(),
 		Handler:           h2c.NewHandler(a.Router, &http2.Server{}),
 		ReadHeaderTimeout: 120 * time.Second,
 		IdleTimeout:       120 * time.Second,
