@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/ettle/strcase v0.2.0
-	github.com/ggicci/httpin v0.20.1
+	github.com/ggicci/httpin v0.20.2
 	github.com/go-chi/chi/v5 v5.2.3
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
